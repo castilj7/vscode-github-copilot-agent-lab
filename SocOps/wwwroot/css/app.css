@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
 html,
 body,
 #app {
@@ -8,6 +10,309 @@ body,
 body {
     font-family: system-ui, -apple-system, sans-serif;
     -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --retro-bg-a: #0f3156;
+    --retro-bg-b: #4a728f;
+    --retro-panel: #c8cfd8;
+    --retro-panel-soft: #dde3ea;
+    --retro-panel-line: #4e5966;
+    --retro-text-main: #12202f;
+    --retro-text-muted: #324456;
+    --retro-btn-face: #2f6fb0;
+    --retro-btn-face-alt: #3d80c4;
+    --retro-btn-ink: #eff7ff;
+    --retro-marked: #95d5a2;
+    --retro-marked-ink: #133322;
+    --retro-winning: #ffd783;
+    --retro-winning-ink: #4a2a00;
+    --retro-backdrop: rgba(7, 12, 19, 0.58);
+}
+
+.retro-game-shell {
+    background:
+        linear-gradient(180deg, var(--retro-bg-b) 0%, var(--retro-bg-a) 100%);
+    color: var(--retro-text-main);
+}
+
+.retro-game-shell::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.06) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+    opacity: 0.14;
+}
+
+.retro-window {
+    width: min(100%, 26rem);
+    background: linear-gradient(180deg, #e6ecf3 0%, var(--retro-panel) 100%);
+    border: 2px solid var(--retro-panel-line);
+    border-radius: 0;
+    box-shadow:
+        inset 2px 2px 0 #f7fbff,
+        inset -2px -2px 0 #6e7a88,
+        0 16px 30px rgba(12, 26, 40, 0.34);
+}
+
+.retro-title {
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    line-height: 1.3;
+    letter-spacing: 0.05em;
+    color: #10253b;
+    text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.75);
+}
+
+.retro-subtitle {
+    font-family: "VT323", "Courier New", monospace;
+    font-size: 1.85rem;
+    line-height: 1;
+    color: var(--retro-text-muted);
+}
+
+.retro-heading {
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.retro-copy,
+.retro-list {
+    font-family: "VT323", "Courier New", monospace;
+    font-size: 1.4rem;
+    color: var(--retro-text-muted);
+}
+
+.retro-list {
+    list-style: square;
+    margin: 0;
+    padding-left: 1.15rem;
+}
+
+.retro-list li {
+    margin-top: 0.25rem;
+}
+
+.retro-panel {
+    background: linear-gradient(180deg, var(--retro-panel-soft) 0%, var(--retro-panel) 100%);
+    border: 2px solid var(--retro-panel-line);
+    border-radius: 0;
+    box-shadow: inset 1px 1px 0 #f8fcff, inset -1px -1px 0 #7d8997;
+}
+
+.retro-header {
+    background: linear-gradient(180deg, #d7dee8 0%, #bdc7d3 100%);
+    border-bottom: 2px solid var(--retro-panel-line);
+    box-shadow: inset 0 1px 0 #f8fcff;
+    position: relative;
+    z-index: 1;
+}
+
+.retro-header-title {
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #1b2e43;
+}
+
+.retro-btn {
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, var(--retro-btn-face-alt) 0%, var(--retro-btn-face) 100%);
+    color: var(--retro-btn-ink);
+    border: 2px solid #1f4367;
+    border-radius: 0;
+    box-shadow:
+        inset 1px 1px 0 #86b7e5,
+        inset -1px -1px 0 #1f4367;
+    transition: transform 120ms ease, filter 120ms ease;
+}
+
+.retro-btn:hover {
+    filter: brightness(1.06);
+}
+
+.retro-btn:active {
+    transform: translateY(1px);
+    box-shadow:
+        inset -1px -1px 0 #86b7e5,
+        inset 1px 1px 0 #1f4367;
+}
+
+.retro-btn:focus-visible,
+.retro-square:focus-visible {
+    outline: 3px dashed #001935;
+    outline-offset: 2px;
+}
+
+.retro-btn-muted {
+    background: linear-gradient(180deg, #e0e6ee 0%, #c4ccd7 100%);
+    color: #1f2e3f;
+    border-color: #5f6d7a;
+    box-shadow: inset 1px 1px 0 #f9fcff, inset -1px -1px 0 #8a96a4;
+}
+
+.retro-instruction-strip {
+    font-family: "VT323", "Courier New", monospace;
+    font-size: 1.45rem;
+    line-height: 1;
+    color: #e8f2ff;
+    background: rgba(7, 20, 35, 0.4);
+    border-top: 1px solid rgba(227, 240, 255, 0.25);
+    border-bottom: 1px solid rgba(227, 240, 255, 0.25);
+}
+
+.retro-bingo-banner {
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--retro-winning-ink);
+    background: linear-gradient(180deg, #ffe9b6 0%, var(--retro-winning) 100%);
+    border-top: 2px solid #785126;
+    border-bottom: 2px solid #785126;
+}
+
+.retro-board-frame {
+    width: min(100%, 28.5rem);
+    background: linear-gradient(180deg, #ced6df 0%, #b6c0cc 100%);
+    border: 2px solid #42505f;
+    box-shadow: inset 2px 2px 0 #f4f8fc, inset -2px -2px 0 #768292;
+    padding: 0.45rem;
+}
+
+.retro-square {
+    font-family: "VT323", "Courier New", monospace;
+    font-size: 1.25rem;
+    line-height: 1.05;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 0;
+    box-shadow: inset 1px 1px 0 #f8fcff, inset -1px -1px 0 #8b96a4;
+    transition: transform 120ms ease, filter 120ms ease;
+}
+
+.retro-square--idle {
+    background: linear-gradient(180deg, #edf2f7 0%, #cfd8e1 100%);
+    border-color: #5f6d7a;
+    color: #1e2f43;
+}
+
+.retro-square--marked {
+    background: linear-gradient(180deg, #b4e6bd 0%, var(--retro-marked) 100%);
+    border-color: #2f6f40;
+    color: var(--retro-marked-ink);
+}
+
+.retro-square--winning {
+    background: linear-gradient(180deg, #ffe9b9 0%, var(--retro-winning) 100%);
+    border-color: #8a5822;
+    color: var(--retro-winning-ink);
+    animation: retroPulse 700ms ease-out;
+}
+
+.retro-square--free {
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.02em;
+}
+
+.retro-square:not(:disabled):hover {
+    filter: brightness(1.04);
+}
+
+.retro-square:not(:disabled):active {
+    transform: translateY(1px);
+    box-shadow: inset -1px -1px 0 #f8fcff, inset 1px 1px 0 #6a7583;
+}
+
+.retro-checkmark {
+    color: #1d5e2d;
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 0.5rem;
+}
+
+.retro-modal-backdrop {
+    background: var(--retro-backdrop);
+    backdrop-filter: blur(1px);
+}
+
+.retro-modal {
+    background: linear-gradient(180deg, #e6edf5 0%, #c4ceda 100%);
+    border: 2px solid #41515f;
+    border-radius: 0;
+    box-shadow: inset 2px 2px 0 #f8fcff, inset -2px -2px 0 #7b8795, 0 20px 34px rgba(9, 18, 28, 0.4);
+    animation: retroModalIn 220ms ease-out;
+}
+
+.retro-modal-title {
+    font-family: "Press Start 2P", "Courier New", monospace;
+    color: #7e4b00;
+    font-size: 1.55rem;
+}
+
+@keyframes retroPulse {
+    0% { transform: scale(0.985); }
+    55% { transform: scale(1.01); }
+    100% { transform: scale(1); }
+}
+
+@keyframes retroModalIn {
+    0% {
+        transform: translateY(8px) scale(0.985);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 640px) {
+    .retro-title {
+        font-size: 1.4rem;
+    }
+
+    .retro-btn {
+        font-size: 0.64rem;
+    }
+
+    .retro-square {
+        font-size: 1.02rem;
+    }
+
+    .retro-copy,
+    .retro-list,
+    .retro-instruction-strip {
+        font-size: 1.2rem;
+    }
+
+    .retro-square--free {
+        font-size: 0.55rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .retro-btn,
+    .retro-square,
+    .retro-modal {
+        transition: none;
+        animation: none;
+    }
 }
 
 /* Tailwind-like utility classes */
